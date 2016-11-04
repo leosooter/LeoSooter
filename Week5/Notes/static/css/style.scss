@@ -1,0 +1,19 @@
+body{
+  padding: 50px;
+}
+.note_display{
+  margin-bottom: 10px;
+}
+.update_button{
+  display: none;
+  position: absolute;
+  margin-top: 141px;
+  margin-left: -62px;
+}
+.add_note{
+  margin-top: 20px;
+  input{
+    margin-top: 10px;
+    display: block;
+  }
+}

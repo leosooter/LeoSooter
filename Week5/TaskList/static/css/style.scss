@@ -1,0 +1,30 @@
+body{
+  padding: 50px;
+}
+.task_display_form{
+    margin-bottom: 20px;
+}
+.form_wrapper{
+  width: 40%;
+  display: inline-block;
+  vertical-align: top;
+  input{
+    margin-right: 10px;
+  }
+}
+
+.task_desc_edit{
+  width: 200px;
+}
+
+.checked{
+  color: grey;
+  .task_desc_edit{
+    color: grey;
+    text-decoration: line-through;
+  }
+}
+
+.delete_checked{
+  display: block;
+}

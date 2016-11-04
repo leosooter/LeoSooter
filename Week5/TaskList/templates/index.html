@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Task List</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap-theme.css') }}">
+
+    <script type="text/javascript" src="{{ url_for('static', filename='javascript/jquery-3.1.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='javascript/javascript.js') }}"></script>
+
+  </head>
+  <body>
+    <header>
+      <h1>List of Tasks</h1>
+    </header>
+    <main>
+      <div class="tasks_wrapper form_wrapper">
+        <!--Partial/tasks.html with list of tasks is appended here -->
+      </div>
+      <div class="form_wrapper">
+        <form class="add_task" action="/tasks/new" method="post">
+          <input class="task_desc_add" type="text" name="task_desc_add" value="">
+          <input type="submit" name="submit" value="Add Task">
+        </form>
+      </div>
+
+      <input class="delete_checked" type="button" name="delete_checked" value="Delete all Completed">
+    </main>
+  </body>
+</html>

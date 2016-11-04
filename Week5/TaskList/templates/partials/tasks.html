@@ -1,0 +1,9 @@
+{% for task in tasks %}
+  <form class="task_display_form" action="" method="post">
+    <input class="task_id" type="hidden" name="task_id" value="{{ task['id'] }}">
+    <input class="update" type="button" name="update" value="Update">
+    <input class="done" type="checkbox" name="done" {{ task['complete'] }} value="">
+    <input class="task_desc_edit" type="text" name="task_desc_edit" value="{{ task['task'] }}">
+    <input class="delete" type="button" name="delete" value="Delete">
+  </form>
+{% endfor %}
