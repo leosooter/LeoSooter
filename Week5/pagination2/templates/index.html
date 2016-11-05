@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Leads Pagination</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/bootstrap-theme.css') }}">
+
+    <script type="text/javascript" src="{{ url_for('static', filename='javascript/jquery-3.1.1.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='javascript/javascript.js') }}"></script>
+
+  </head>
+  <body>
+    <header>
+      <h1>Leads</h1>
+    </header>
+    <main>
+      <form class="search_form" action="index.html" method="post">
+        <input id="f_name" class="search_criteria" type="text" name="first_name" placeholder="First Name" value="">
+        <input id="l_name" class="search_criteria" type="text" name="last_name" placeholder="Last Name" value="">
+        <label>From <input id="from" class="search_criteria" type="date" name="from" value=""></label>
+        <label>To <input id="to" class="search_criteria" type="date" name="to" value=""></label>
+        <label for="per_page">Results per Page</label>
+        <select class="per_page" name="per_page">
+          <option value="5">5</option>
+          <option value="10" selected>10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+        </select>
+      </form>
+      <div class="page_links">
+
+      </div>
+
+
+      <div class="results_wrapper">
+
+      </div>
+
+    </main>
+  </body>
+</html>
