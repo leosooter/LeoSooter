@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Ninja Gold</title>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'ninja_gold/css/styles.css' %}" media="screen" title="no title">
+  </head>
+  <body>
+    <h1>Ninja Gold</h1>
+    <div class="info_screen">
+      <div class="gold_wrapper">
+        <span>Your Gold: {{request.session.gold}}</span>
+      </div>
+      <div class="location_wrapper">
+        {% for location in location_list %}
+          <div class="location_box">
+            <img src="{% static location.img_path %}" alt="" />
+            <h3>{{ location.name }} ~</h3>
+            <span>{{ location.earns }}</span>
+            <form class="action_button" action="/process" method="post">
+              {% csrf_token %}
+              <input type="hidden" name="name" value="{{ location.name }}">
+              <input type="hidden" name="gold_min" value="{{ location.gold_min }}">
+              <input type="hidden" name="gold_max" value="{{ location.gold_max }}">
+              <input type="submit" name="submit" value="Find Gold">
+            </form>
+          </div>
+        {% endfor %}
+      </div>
+      <div class="actions_wrapper">
+        {% for action in request.session.actions %}
+          <p class="{{action.class}}">{{ action.message }}</p>
+        {% endfor %}
+      </div>
+    </div>
+  </body>
+</html>

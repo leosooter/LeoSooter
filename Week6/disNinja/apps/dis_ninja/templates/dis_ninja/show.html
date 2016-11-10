@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Disappearing Ninjas</title>
+  </head>
+  <body>
+    <div class="ninja_display">
+      {% load staticfiles %}
+      {% static "" as baseurl %}
+      <img src="{{baseurl}}/dis_ninja/images/{{color}}.jpg" alt="Ninja Turtle" />
+    </div>
+  </body>
+</html>
