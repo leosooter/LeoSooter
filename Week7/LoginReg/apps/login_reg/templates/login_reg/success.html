@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'login_reg/css/style.css' %}">
+    <title>Login Registration</title>
+  </head>
+  <body>
+
+    <h1>Success</h1>
+    <h3>Hello {{request.session.user.first_name}}</h3>
+    <a href="/account">Edit Account</a><a href="/logout">Logout</a>
+    <h3>Information for logged-in users only:</h3>
+    {%  for user in users %}
+      <div class="user_info">
+        <h4>{{user.first_name}} {{user.last_name}} {{user.email}}</h4>
+        {% for question in questions %}
+          {% if question.user.id == user.id %}
+            <p>{{question.number}} <em>{{question.question}}</em>  {{question.answer}} </p>
+          {% endif %}
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </body>
+</html>

@@ -1,0 +1,29 @@
+body{
+  padding: 30px;
+}
+
+table{
+  width: 70%;
+}
+th{
+  color: rgb(66, 67, 68);
+}
+td, th{
+  padding: 10px;
+  border: 1px solid rgb(173, 173, 173);
+}
+
+.new_course_form input{
+  margin-bottom: 20px;
+}
+label{
+  color: red;
+}
+a{
+  width: 50px;
+  display: inline-block;
+}
+form{
+  width: 150px;
+  display: inline-block;
+}

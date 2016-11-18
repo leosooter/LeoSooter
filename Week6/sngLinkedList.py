@@ -12,6 +12,7 @@ class SinglyLinkedList(object):
         self.head = None
 
     def print_all_vals(self):
+        print "Printing Values"
         runner = self.head
         print runner.value
         while runner.next != None:
@@ -32,17 +33,24 @@ class SinglyLinkedList(object):
         print "Added value", self.head.value, "to front"
 
     def insert_before(self, nextval, val):
-        if self.head.value == nextval:
-            print "nextval is head"
-            self.add_front(val)
-        else:
-            runner = self.head
-            while runner.value != nextval:
+        # if self.head.value == nextval:
+        #     print "nextval is head"
+        #     self.add_front(val)
+        # else:
+        runner = self.head
+        while runner:
+            if runner.next.value == nextval:
+                print "inserting",val,"before",runner.value
+                temp = runner.next
+                runner.next = Node(val)
+                runner.next.next = temp
+                return True
+            else:
                 trailer = runner
                 runner = runner.next
-            print "inserting",val,"before",runner.value
-            trailer.next = Node(val)
-            trailer.next.next = runner
+        print "Value not in list"
+        return False
+
 
     def insert_after(self, preval, val):
         trailer = self.head
@@ -82,10 +90,12 @@ list.head = Node('B')
 for letter in letter_array:
     list.add_back(letter)
 
-list.add_front('A')
-list.insert_before('J', 'I')
-list.insert_after('D','E')
+# list.add_front('A')
 list.print_all_vals()
-
-list.reverse_list()
+list.insert_before('B', 'I')
 list.print_all_vals()
+# list.insert_after('D','E')
+# list.print_all_vals()
+#
+# list.reverse_list()
+# list.print_all_vals()

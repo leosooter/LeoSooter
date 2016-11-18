@@ -1,0 +1,30 @@
+body{
+  padding: 30px;
+}
+a{
+  display: inline-block;
+  margin-right: 30px;
+}
+form{
+  input{
+    display: block;
+    margin-bottom: 20px;
+  }
+}
+.hide{
+  display: none;
+}
+.show{
+  display: inherit;
+}
+.error{
+  color: rgb(224, 108, 12);
+}
+.user_info{
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  p{
+    margin-left: 20px;
+  }
+}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'course_app/css/style.css' %}">
+    <title>Courses</title>
+  </head>
+  <body>
+    <h3>Are you sure you want to remove the following course?</h3>
+      <p><strong>Name:</strong> {{name}}</p>
+      <p><strong>Description:</strong> {{description}}</p>
+      <a href="/"><button type="button" name="button">No</button></a>
+      <form action="/destroy/{{id}}" method="post">
+        {% csrf_token %}
+        <input type="submit" name="Submit" value="Permanently Delete">
+      </form>
+  </body>
+</html>
