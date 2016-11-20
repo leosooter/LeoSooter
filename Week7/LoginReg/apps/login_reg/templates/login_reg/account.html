@@ -8,35 +8,23 @@
   </head>
   <body>
     <h1>Account</h1>
-    {% for error in request.session.errors %}
-      {{error}}
-    {% endfor %}
-    <form class="update_form" action="/update" method="post">
+    <form class="form" action="/update" method="post">
       {% csrf_token %}
-      <fieldset>
-        <legend>Account Info</legend>
-        {% for field, note in request.session.errors.items %}{% if field == 'first_name' %}<p class="error">{{note}}</p>{% endif %}{% endfor %}
-        <input type="text" name="update_first_name" placeholder="First Name" value="{{request.session.user.first_name}}">
-        {% for field, note in request.session.errors.items %}{% if field == 'last_name' %}<p class="error">{{note}}</p>{% endif %}{% endfor %}
-        <input type="text" name="update_last_name" placeholder="Last Name" value="{{request.session.user.last_name}}">
-        <!-- I am using a 'text' rather than 'email' input to test backend validations -->
-        {% for field, note in request.session.errors.items %}{% if field == 'email' %}<p class="error">{{note}}</p>{% endif %}{% endfor %}
-        <input type="text" name="update_email" placeholder="Email" value="{{request.session.user.email}}">
-        {% for field, note in request.session.errors.items %}{% if field == 'birthday' %}<p class="error">{{note}}</p>{% endif %}{% endfor %}
-        <input type="date" name="update_birthday" placeholder="Birthday" value="{{request.session.user.birthday}}">
-      </fieldset>
-      <h4 class='error'>{{note}}</h4>
-      <fieldset>
-        <legend>Security Questions</legend>
-        {% for field, note in request.session.errors.items %}{% if field == 'q_1' %}<p class="error">{{note}}</p>{% endif %}{% endfor %}
-        <label>What city were you born in? <input type="text" name="update_q_1" value="{{question1.answer}}"></label>
-        {% for field, note in request.session.errors.items %}{% if field == 'q_2' %}<p class="error">{{note}}</p>{% endif %}{% endfor %}
-        <label>What was the name of your first pet? <input type="text" name="update_q_2" value="{{question2.answer}}"></label>
-        {% for field, note in request.session.errors.items %}{% if field == 'q_3' %}<p class="error">{{note}}</p>{% endif %}{% endfor %}
-        <label>What is your favorite coding language? <input type="text" name="update_q_3" value="{{question3.answer}}"></label>
-      </fieldset>
+      <!-- I perfer this ugly inline error note loop format to one that looks prettier but takes up 5 lines -->
+      <p class="error" >{% for message in messages %}{% if message.extra_tags == 'first_name' %}{{message}}{% endif %}{% endfor %}</p>
+      <!-- I am using a 'text' rather than 'email' input to test backend validations-->
+      <input type="text" name="first_name" placeholder="First Name" value="{{request.session.user_info.first_name}}" >
 
-      <input type="submit" name="submit" value="Update">
+      <p class="error" >{% for message in messages %}{% if message.extra_tags == 'last_name' %}{{message}}{% endif %}{% endfor %}</p>
+      <input type="text" name="last_name" placeholder="Last Name" value="{{request.session.user_info.last_name}}">
+
+      <p class="error" >{% for message in messages %}{% if message.extra_tags == 'email' %}{{message}}{% endif %}{% endfor %}</p>
+      <input type="text" name="email" placeholder="Email" value="{{request.session.user_info.email}}">
+
+      <p class="error" >{% for message in messages %}{% if message.extra_tags == 'birthday' %}{{message}}{% endif %}{% endfor %}</p>
+      <input type="date" name="birthday" placeholder="Birthday" value="{{request.session.user_info.birthday}}">
+
+      <input class="submit" type="submit" name="submit" value="Update"> <a class="cancel" href="/success">Cancel</a>
     </form>
   </body>
 </html>

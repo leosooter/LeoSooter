@@ -9,17 +9,16 @@
   <body>
 
     <h1>Success</h1>
-    <h3>Hello {{request.session.user.first_name}}</h3>
+    <h3>Hello {% for user in users %}{% if user.id == request.session.login_id %}<span>{{user.first_name}}</span>{% endif %}{% endfor %}</h3>
     <a href="/account">Edit Account</a><a href="/logout">Logout</a>
     <h3>Information for logged-in users only:</h3>
-    {%  for user in users %}
+    {% for user in users %}
       <div class="user_info">
-        <h4>{{user.first_name}} {{user.last_name}} {{user.email}}</h4>
-        {% for question in questions %}
-          {% if question.user.id == user.id %}
-            <p>{{question.number}} <em>{{question.question}}</em>  {{question.answer}} </p>
-          {% endif %}
-        {% endfor %}
+        <h4>{{user.first_name}} {{user.last_name}}: <em>{{user.email}}</em></h4>
+        <form class="delete_form" action="/delete/{{user.id}}" method="post">
+          {% csrf_token %}
+          <input class="submit" type="submit" name="submit" value="Delete">
+        </form>
       </div>
     {% endfor %}
   </body>
